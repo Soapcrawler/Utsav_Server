@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}CCTV :: Sastra Manufacturing{% endblock %}
+{% block content %}
+<h1 class="page-title">CCTV</h1>
+<div class="cctv-layout">
+  <section class="panel">
+    <h2>Camera 1</h2>
+    <div class="cam">
+      {% if cam1 %}
+      <img src="{{ cam1 }}" alt="CCTV camera 1 live feed">
+      {% else %}
+      <div class="nosignal">NO SIGNAL</div>
+      {% endif %}
+      <span class="ov tl">CAM 1</span>
+      <span class="ov tr"><span class="dot">&#9679;</span> REC</span>
+      <span class="ov bl" id="camtime"></span>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Camera details</h2>
+    <div class="table-wrap"><table class="data-table">
+      <tr><th>Camera</th><td>CAM 1</td></tr>
+      <tr><th>Status</th><td>{{ 'Online' if cam1 else 'No signal' }}</td></tr>
+      <tr><th>Recording</th><td>{{ 'Yes' if cam1 else 'No' }}</td></tr>
+    </table></div>
+  </section>
+</div>
+<script>
+(function () {
+  var el = document.getElementById('camtime');
+  function tick() { var d = new Date(); el.textContent = d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB'); }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+{% endblock %}

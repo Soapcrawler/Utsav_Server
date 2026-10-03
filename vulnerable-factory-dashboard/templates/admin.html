@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel :: Sastra Manufacturing{% endblock %}
+{% block content %}
+<h1 class="page-title">Admin Panel</h1>
+<h2>All employees</h2>
+<div class="table-wrap"><table class="data-table">
+  <tr><th>ID</th><th>Username</th><th>Name</th><th>Role</th><th>Dept</th><th>Score</th></tr>
+  {% for u in users %}
+  <tr>
+    <td>{{ u['id'] }}</td><td>{{ u['username'] }}</td><td>{{ u['full_name'] }}</td>
+    <td>{{ u['role'] }}</td><td>{{ u['department'] }}</td><td>{{ u['performance_score'] }}</td>
+  </tr>
+  {% endfor %}
+</table></div>
+
+<br>
+
+<h2>All grievances</h2>
+<div class="table-wrap"><table class="data-table">
+  <tr><th>ID</th><th>From</th><th>Subject</th><th>Status</th></tr>
+  {% for g in grievances %}
+  <tr><td>{{ g['id'] }}</td><td>{{ g['full_name'] }}</td><td>{{ g['subject'] }}</td><td>{{ g['status'] }}</td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}

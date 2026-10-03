@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Employee Corner :: Sastra Manufacturing{% endblock %}
+{% block content %}
+<h1 class="page-title">Employee Corner</h1>
+
+<section class="panel">
+  <h2>This month's top performers</h2>
+  <div class="podium">
+    {% for emp in podium %}
+    <article class="pod rank{{ emp['rank'] }}">
+      <div class="pod-win">
+        <div class="titlebar{{ '' if emp['rank'] == 1 else ' inactive' }}">
+          <span class="t-text">{{ ['', '1st', '2nd', '3rd'][emp['rank']] }} Place</span>
+          <span class="t-btns"><button type="button" tabindex="-1" aria-hidden="true">&#10005;</button></span>
+        </div>
+        <div class="pod-body">
+          <img class="pod-photo" src="{{ emp['photo'] }}" alt="{{ emp['full_name'] }}">
+          <p class="pod-name">{{ emp['full_name'] }}</p>
+          <div class="pod-dept">{{ emp['department'] }}</div>
+          <div>Performance score: <b>{{ emp['performance_score'] }}</b></div>
+          <div class="progress"><span style="width: {{ emp['performance_score'] }}%"></span></div>
+          <a class="btn" href="{{ url_for('profile', user_id=emp['id']) }}">View profile</a>
+        </div>
+      </div>
+      <div class="pod-step">{{ emp['rank'] }}</div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Employee directory search</h2>
+  <form class="search" method="POST" action="{{ url_for('employee_corner') }}">
+    <input type="text" name="search" value="{{ search_term }}" aria-label="Search employees by name">
+    <input type="submit" value="Search">
+  </form>
+  {% if results is not none %}
+    {% if results %}
+    <div class="table-wrap"><table class="data-table">
+      <tr><th>ID</th><th>Name</th><th>Department</th><th>Score</th></tr>
+      {% for row in results %}
+      <tr><td>{{ row[0] }}</td><td>{{ row[1] }}</td><td>{{ row[2] }}</td><td>{{ row[3] }}</td></tr>
+      {% endfor %}
+    </table></div>
+    {% else %}
+    <p>No employees matched your search.</p>
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock %}

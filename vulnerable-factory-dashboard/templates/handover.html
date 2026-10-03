@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Shift Handover Notes :: Sastra Manufacturing{% endblock %}
+{% block content %}
+<h1 class="page-title">Shift Handover Notes</h1>
+
+<section class="panel">
+  <h2>New handover note</h2>
+  <form method="POST" action="{{ url_for('handover') }}">
+    <div class="form-grid">
+      <div class="field">
+        <label for="shift_date"><u>S</u>hift date</label>
+        <input type="date" id="shift_date" name="shift_date" value="{{ today }}" required>
+      </div>
+      <div class="field wide">
+        <label for="work_order"><u>C</u>urrent work order</label>
+        <input type="text" id="work_order" name="work_order" placeholder="e.g. WO-4412: Smelt 120 ancient debris into netherite scrap" required>
+      </div>
+    </div>
+
+    <fieldset class="group">
+      <legend>Furnace status</legend>
+      <div class="furnaces">
+        {% for i in range(1, 5) %}
+        <div class="field">
+          <label for="furnace_{{ i }}">Furnace {{ i }}</label>
+          <select id="furnace_{{ i }}" name="furnace_{{ i }}">
+            {% for s in statuses %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+          </select>
+        </div>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <div class="form-grid">
+      <fieldset class="group">
+        <legend>Accidents this shift?</legend>
+        <label class="inline"><input type="radio" name="accidents" value="No" checked> No</label>
+        <label class="inline"><input type="radio" name="accidents" value="Yes"> Yes</label>
+      </fieldset>
+      <div class="field">
+        <label for="attendance"><u>A</u>ttendance (out of {{ total }})</label>
+        <input type="number" id="attendance" name="attendance" min="0" max="{{ total }}" step="1" placeholder="e.g. 28" required>
+      </div>
+    </div>
+
+    <div class="actions"><input type="submit" value="Save note"><button type="reset">Clear</button></div>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Previous handover notes</h2>
+  {% if notes %}
+  <div class="table-wrap"><table class="data-table">
+    <tr>
+      <th>Shift date</th><th>Work order</th><th>Furnace 1</th><th>Furnace 2</th><th>Furnace 3</th><th>Furnace 4</th>
+      <th>Accidents</th><th>Attendance</th><th>Logged by</th>
+    </tr>
+    {% for n in notes %}
+    <tr>
+      <td>{{ n['shift_date'] }}</td>
+      <td>{{ n['work_order'] }}</td>
+      <td>{{ n['furnace_1'] }}</td><td>{{ n['furnace_2'] }}</td><td>{{ n['furnace_3'] }}</td><td>{{ n['furnace_4'] }}</td>
+      <td>{% if n['accidents'] == 'Yes' %}<b>Yes</b>{% else %}No{% endif %}</td>
+      <td>{{ n['attendance'] }}/{{ total }}</td>
+      <td>{{ n['full_name'] }}</td>
+    </tr>
+    {% endfor %}
+  </table></div>
+  {% else %}
+  <p>No handover notes have been saved yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

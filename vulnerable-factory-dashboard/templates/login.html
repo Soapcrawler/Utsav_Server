@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Log On to Factory Network{% endblock %}
+{% block wclass %}dialog{% endblock %}
+{% block chrome %}<div class="titlebar"><span>&#127981;</span><span class="t-text">Log On to Factory Network</span><span class="t-btns"><button type="button" aria-label="Close">&#10005;</button></span></div>{% endblock %}
+{% block content %}
+<div class="dlg">
+  <div class="dlg-top">
+    <span class="msgicon">&#128273;</span>
+    <p>Type a user name and password to log on to the Sastra Manufacturing plant intranet. Authorized personnel only.</p>
+  </div>
+  {% if error %}{% set msg = error %}{% include "_msgbox.html" %}{% endif %}
+  <form method="POST" action="{{ url_for('login') }}">
+    <div class="field"><label for="username"><u>U</u>ser name:</label>
+      <input type="text" id="username" name="username" autocomplete="username"></div>
+    <div class="field"><label for="password"><u>P</u>assword:</label>
+      <input type="password" id="password" name="password" autocomplete="current-password"></div>
+    <div class="buttons"><input type="submit" value="OK"><button type="reset">Cancel</button></div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Grievances :: Sastra Manufacturing{% endblock %}
+{% block content %}
+<h1 class="page-title">Grievances</h1>
+<div class="grid-split">
+  <section class="panel">
+    <h2>Submit a grievance</h2>
+    <form method="POST" action="{{ url_for('grievances') }}">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6"></textarea>
+      <input type="submit" value="Submit grievance">
+    </form>
+  </section>
+  <section class="panel">
+    <h2>My grievances</h2>
+    {% if grievances %}
+    <div class="table-wrap"><table class="data-table">
+      <tr><th>Subject</th><th>Status</th><th></th></tr>
+      {% for g in grievances %}
+      <tr>
+        <td>{{ g['subject'] }}</td>
+        <td>{{ g['status'] }}</td>
+        <td><a href="{{ url_for('view_grievance', grievance_id=g['id']) }}">View</a></td>
+      </tr>
+      {% endfor %}
+    </table></div>
+    {% else %}
+    <p>You haven't submitted any grievances yet.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
