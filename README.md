@@ -3,19 +3,19 @@
 FACTORY SECURITY LAB
 │
 ├── 01. SQL Injection
-│      └── Login
+│   └── Login
 │
 ├── 02. SQL Injection
-│      └── Employee Search
+│   └── Employee Search
 │
 ├── 03. IDOR
-│      └── Employee Profiles
+│   └── Employee Profiles
 │
 ├── 04. IDOR
-│      └── Grievances
+│   └── Grievances
 │
 ├── 05. Path Traversal
-│      └── Factory Documents
+│   └── Factory Documents
 │
 └── 06. Broken Access Control
-       └── Factory Admin Panel
+    └── Factory Admin Panel
