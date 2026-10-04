@@ -1,1 +1,1 @@
-FLAG{factory_path_traversal}
+AxA{F4CT0RY_P47H_7R4V3RS4L}
