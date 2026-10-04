@@ -1,0 +1,25 @@
+=====================================================
+SASTRA MANUFACTURING - PLANT SAFETY MANUAL
+Document ID: DOC-SAF-001 (Rev 4.2)
+=====================================================
+
+1. MANDATORY PERSONAL PROTECTIVE EQUIPMENT (PPE)
+   - High-visibility safety vests must be worn in all transit aisles.
+   - Steel-toe boots (rated ASTM F2413) are mandatory across production areas.
+   - Hard hats and ballistic safety glasses must be worn in smelting bays.
+   - Aluminized heat-resistant gloves and face shields are required within 15 meters of operating furnaces.
+
+2. HAZARD COMMUNICATION & CHEMICAL HANDLING
+   - Consult the Material Safety Data Sheet (MSDS) prior to handling industrial solvents.
+   - Chemical baths in Bay 3 must only be filled by certified technicians with fume hoods engaged.
+   - Any uncontained spill exceeding 2 liters must be reported immediately to Plant Safety.
+
+3. LOCKOUT / TAGOUT (LOTO) PROTOCOLS
+   - Always de-energize primary breaker switches before conducting mechanical maintenance.
+   - Apply physical padlock and red warning tag bearing the technician's name and badge number.
+   - Never bypass interlock safety switches or optical curtains on conveyor systems.
+
+4. FIRST AID & EMERGENCY STATIONS
+   - Eyewash stations are located at Columns C-4, F-8, and outside the chemical storage annex.
+   - First aid kits are replenished weekly and located adjacent to each floor supervisor's desk.
+   - Emergency contact internal extension: 2222.

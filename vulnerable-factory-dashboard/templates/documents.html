@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Factory Documents :: Sastra Manufacturing{% endblock %}
+{% block content %}
+<h1 class="page-title">&#128196; Factory Documents</h1>
+
+<div class="panel">
+  <b>Apex Plant Technical Documentation &amp; Operating Procedures</b>
+  <p class="muted" style="margin-top: 4px;">Authorized factory manuals, technical operating procedures, and safety documentation. Select any document below to inspect official records.</p>
+</div>
+
+<div class="table-wrap">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 240px;">Document Title</th>
+        <th style="width: 220px;">File Reference</th>
+        <th>Description</th>
+        <th style="width: 70px; text-align: center;">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for doc in documents %}
+      <tr>
+        <td><b>{{ doc.title }}</b></td>
+        <td><code>{{ doc.filename }}</code></td>
+        <td>{{ doc.description }}</td>
+        <td style="text-align: center;">
+          <a class="btn" href="{{ url_for('view_document', file=doc.filename) }}">View</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

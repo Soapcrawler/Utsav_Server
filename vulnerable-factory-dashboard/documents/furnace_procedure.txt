@@ -1,0 +1,29 @@
+=====================================================
+SASTRA MANUFACTURING - FURNACE OPERATING PROCEDURE
+Document ID: DOC-SOP-FURN-04 (Rev 2.1)
+=====================================================
+
+APPLIES TO: Furnaces 1, 2, 3, and 4 (Smelting & Annealing Line)
+
+1. PRE-STARTUP INSPECTION
+   - Verify secondary water-cooling loop flow rate (nominal > 420 L/min).
+   - Inspect ceramic refractory lining for fissures, spalling, or thermal stress cracks.
+   - Confirm exhaust damper position is at 100% open prior to ignition.
+   - Ensure the emergency quench bath temperature is below 35°C.
+
+2. IGNITION & PRE-HEATING SEQUENCE
+   - Activate automated chamber nitrogen purge cycle (minimum 180 seconds).
+   - Engage pilot burner ignition sequence via Sastra 98 Control terminal.
+   - Confirm flame stabilization through infrared optical sensor check.
+   - Ramp chamber temperature at a maximum gradient of 60°C per hour until reaching 850°C.
+
+3. NORMAL OPERATING PARAMETERS
+   - Operating temperature range: 1,120°C - 1,260°C.
+   - Internal chamber gas pressure: 1.05 to 1.20 bar.
+   - Molten metal batch load must not exceed 4,500 kg per charge.
+   - Oxygen enrichment flow: 14.5 Nm3/h (regulated).
+
+4. EMERGENCY SHUTDOWN PROCEDURE
+   - Depress the red E-STOP button located on console or Bay Column E-2.
+   - The primary pneumatic gas shut-off valve will automatically close within 1.5 seconds.
+   - Do NOT manually open the furnace charging door during an emergency shutdown.
