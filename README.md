@@ -1,5 +1,7 @@
 **A damn vulnerable server!**
 
+# FACTORY SECURITY LAB
+```text
 FACTORY SECURITY LAB
 │
 ├── 01. SQL Injection
@@ -19,3 +21,4 @@ FACTORY SECURITY LAB
 │
 └── 06. Broken Access Control
     └── Factory Admin Panel
+
