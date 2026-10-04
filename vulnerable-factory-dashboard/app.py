@@ -11,7 +11,38 @@ from database import HANDOVER_SCHEMA
 app = Flask(__name__)
 app.secret_key = "factory-dashboard-dev-secret"
 
-DATABASE = "factory.db"
+DB_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "factory.db")
+DATABASE = DB_FILE if os.path.exists(DB_FILE) else "factory.db"
+
+# Factory Documents
+DOCUMENTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "documents")
+FACTORY_DOCUMENTS = [
+    {
+        "title": "Safety Manual",
+        "filename": "safety_manual.txt",
+        "description": "Standard safety regulations, PPE requirements, and hazard management protocols.",
+    },
+    {
+        "title": "Furnace Operating Procedure",
+        "filename": "furnace_procedure.txt",
+        "description": "Operational guidelines, thermal limits, and ignition SOPs for Furnaces 1 through 4.",
+    },
+    {
+        "title": "Emergency Response Guide",
+        "filename": "emergency_guide.txt",
+        "description": "Evacuation steps, fire suppression protocols, and emergency medical contacts.",
+    },
+    {
+        "title": "Maintenance Report",
+        "filename": "maintenance_report.txt",
+        "description": "Quarterly inspection report, asset integrity logs, and scheduled mechanical service.",
+    },
+    {
+        "title": "Shift Handover Guide",
+        "filename": "shift_handover_guide.txt",
+        "description": "Standard procedures for shift rotations, furnace logging, and handover signoffs.",
+    },
+]
 
 # Podium photos live in static/photos/<username>.<ext>
 PHOTO_DIR = os.path.join(app.static_folder, "photos")
@@ -276,19 +307,71 @@ def cctv():
     return render_template("cctv.html", cam1=cam1)
 
 
+# Factory Documents
+@app.route("/documents")
+@login_required
+def documents():
+    return render_template("documents.html", documents=FACTORY_DOCUMENTS)
+
+
+@app.route("/document")
+@login_required
+def view_document():
+    filename = request.args.get("file", "")
+    if not filename:
+        flash("No document specified.")
+        return redirect(url_for("documents"))
+
+    # INTENTIONAL VULNERABILITY: Path Traversal
+    # User-controlled parameter 'file' is joined directly with DOCUMENTS_DIR
+    # without sanitizing '../' sequences, allowing file reads outside the directory.
+    filepath = os.path.join(DOCUMENTS_DIR, filename)
+
+    try:
+        with open(filepath, "r", encoding="utf-8", errors="replace") as f:
+            content = f.read()
+    except Exception as e:
+        flash(f"Error reading document '{filename}': {e}")
+        return redirect(url_for("documents"))
+
+    return render_template("view_document.html", filename=filename, content=content)
+
+
 @app.route("/admin")
 @login_required
 def admin_panel():
-    if session.get("role") != "admin":
-        flash("Admin access required.")
-        return redirect(url_for("dashboard"))
+    # INTENTIONAL VULNERABILITY: Broken Access Control / Missing Function-Level Authorization
+    # The endpoint checks authentication via @login_required, but intentionally omits
+    # the authorization check: if session.get("role") != "admin": ...
+    # This allows any logged-in user (including employees) to access the Factory Control Center.
     db = get_db()
+    all_users = db.execute("SELECT * FROM users ORDER BY id ASC").fetchall()
     all_grievances = db.execute(
-        "SELECT g.*, u.full_name FROM grievances g JOIN users u ON g.user_id = u.id ORDER BY g.id DESC"
+        "SELECT g.*, u.full_name, u.username FROM grievances g JOIN users u ON g.user_id = u.id ORDER BY g.id DESC"
     ).fetchall()
-    all_users = db.execute("SELECT * FROM users").fetchall()
-    return render_template("admin.html", grievances=all_grievances, users=all_users)
+    handovers = db.execute(
+        "SELECT h.*, u.full_name FROM handover_notes h JOIN users u ON h.user_id = u.id ORDER BY h.shift_date DESC LIMIT 5"
+    ).fetchall()
+
+    total_employees = len(all_users)
+    pending_grievances = sum(1 for g in all_grievances if g["status"] == "Pending")
+
+    dept_counts = {}
+    for u in all_users:
+        dept = u["department"] or "General"
+        dept_counts[dept] = dept_counts.get(dept, 0) + 1
+
+    return render_template(
+        "admin.html",
+        users=all_users,
+        grievances=all_grievances,
+        handovers=handovers,
+        total_employees=total_employees,
+        pending_grievances=pending_grievances,
+        dept_counts=dept_counts,
+    )
 
 
 if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, host="0.0.0.0", port=port)

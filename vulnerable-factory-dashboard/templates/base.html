@@ -14,6 +14,7 @@
   <a class="ql" href="{{ url_for('dashboard') }}" title="My Home">&#128421;&#65039;</a>
   <a class="ql" href="{{ url_for('employee_corner') }}" title="Employee Corner">&#127942;</a>
   <a class="ql" href="{{ url_for('handover') }}" title="Shift Handover">&#128203;</a>
+  <a class="ql" href="{{ url_for('documents') }}" title="Factory Documents">&#128196;</a>
   <span class="tb-sep"></span>
   {% endif %}
   <div class="task">&#127981; {{ self.title() }}</div>
@@ -29,7 +30,8 @@
     <a href="{{ url_for('handover') }}">&#128203; Shift Handover</a>
     <a href="{{ url_for('cctv') }}">&#128249; CCTV</a>
     <a href="{{ url_for('grievances') }}">&#128221; Grievances</a>
-    {% if session.get('role') == 'admin' %}<a href="{{ url_for('admin_panel') }}">&#128274; Admin</a>{% endif %}
+    <a href="{{ url_for('documents') }}">&#128196; Factory Documents</a>
+    {% if session.get('role') == 'admin' %}<a href="{{ url_for('admin_panel') }}">&#128274; Control Center</a>{% endif %}
     <hr>
     <a href="{{ url_for('logout') }}">&#128465;&#65039; Log Off {{ session.get('username') }}...</a>
     {% else %}
@@ -61,6 +63,7 @@
         <span class="tsep"></span>
         <a class="tbtn" href="{{ url_for('employee_corner') }}"><span class="ti">&#128269;</span>Search</a>
         <a class="tbtn" href="{{ url_for('handover') }}"><span class="ti">&#11088;</span>Handover</a>
+        <a class="tbtn" href="{{ url_for('documents') }}"><span class="ti">&#128196;</span>Documents</a>
         <button type="button" class="tbtn" onclick="window.print()"><span class="ti">&#128424;&#65039;</span>Print</button>
       </div>
       <div class="addrbar">
@@ -75,7 +78,8 @@
         <a href="{{ url_for('handover') }}" class="{{ 'is-active' if request.endpoint == 'handover' }}">Shift Handover</a>
         <a href="{{ url_for('cctv') }}" class="{{ 'is-active' if request.endpoint == 'cctv' }}">CCTV</a>
         <a href="{{ url_for('grievances') }}" class="{{ 'is-active' if request.endpoint == 'grievances' }}">Grievances</a>
-        {% if session.get('role') == 'admin' %}<a href="{{ url_for('admin_panel') }}" class="{{ 'is-active' if request.endpoint == 'admin_panel' }}">Admin</a>{% endif %}
+        <a href="{{ url_for('documents') }}" class="{{ 'is-active' if request.endpoint in ('documents', 'view_document') }}">Documents</a>
+        {% if session.get('role') == 'admin' %}<a href="{{ url_for('admin_panel') }}" class="{{ 'is-active' if request.endpoint == 'admin_panel' }}">Control Center</a>{% endif %}
         <a href="{{ url_for('logout') }}">Log Off</a>
       </div>
       {% endif %}
@@ -92,7 +96,8 @@
                 <li>&#128193; <a href="{{ url_for('handover') }}" class="{{ 'is-active' if request.endpoint == 'handover' }}">Shift Handover</a></li>
                 <li>&#128249; <a href="{{ url_for('cctv') }}" class="{{ 'is-active' if request.endpoint == 'cctv' }}">CCTV</a></li>
                 <li>&#128193; <a href="{{ url_for('grievances') }}" class="{{ 'is-active' if request.endpoint == 'grievances' }}">Grievances</a></li>
-                {% if session.get('role') == 'admin' %}<li>&#128274; <a href="{{ url_for('admin_panel') }}" class="{{ 'is-active' if request.endpoint == 'admin_panel' }}">Admin</a></li>{% endif %}
+                <li>&#128196; <a href="{{ url_for('documents') }}" class="{{ 'is-active' if request.endpoint in ('documents', 'view_document') }}">Documents</a></li>
+                {% if session.get('role') == 'admin' %}<li>&#128274; <a href="{{ url_for('admin_panel') }}" class="{{ 'is-active' if request.endpoint == 'admin_panel' }}">Control Center</a></li>{% endif %}
               </ul>
             </li>
             <li>&#127760; Network Neighborhood</li>
