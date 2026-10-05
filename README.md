@@ -21,4 +21,3 @@ FACTORY SECURITY LAB
 │
 └── 06. Broken Access Control
     └── Factory Admin Panel
-

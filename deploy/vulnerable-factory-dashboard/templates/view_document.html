@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}View Document: {{ filename }} :: Blast Furnace Guild{% endblock %}
+{% block content %}
+<h1 class="page-title">&#128196; Document Viewer</h1>
+
+<div class="panel" style="display: flex; justify-content: space-between; align-items: center;">
+  <div>
+    <b>File Reference:</b> <code>{{ filename }}</code>
+  </div>
+  <div>
+    <span class="muted">Status: Loaded</span>
+  </div>
+</div>
+
+<div class="panel panel-dark" style="padding: 12px; margin-bottom: 12px;">
+  <pre style="margin: 0; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1.5; white-space: pre-wrap; word-break: break-all;">{{ content }}</pre>
+</div>
+
+<div class="actions">
+  <a class="btn" href="{{ url_for('documents') }}">&laquo; Back to Documents</a>
+</div>
+{% endblock %}
