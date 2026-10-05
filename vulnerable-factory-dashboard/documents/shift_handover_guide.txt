@@ -1,0 +1,23 @@
+=====================================================
+BLAST FURNACE GUILD - SHIFT HANDOVER GUIDE
+Document ID: DOC-SOP-HANDOVER-01 (Rev 3.0)
+=====================================================
+
+1. PURPOSE & SCOPE
+   - Establishes standardized procedures for transferring operational responsibility
+     between incoming and outgoing plant crews.
+   - Applies to all shift supervisors, furnace operators, and maintenance staff.
+
+2. SHIFT ROTATION SCHEDULE
+   - Morning Shift:  06:00 - 14:00 (Supervisor: Geoff Eligah)
+   - Afternoon Shift: 14:00 - 22:00 (Supervisor: Benjamin Natas)
+   - Night Shift:    22:00 - 06:00 (Supervisor: John Deeler)
+
+3. MANDATORY HANDOVER PROCEDURES
+   - Physical Walkthrough: Outgoing supervisor must conduct a joint walk with the incoming
+     supervisor 15 minutes prior to shift end.
+   - Furnace Status Verification: Document operational state for Furnaces 1, 2, 3, and 4
+     (Running / Idle / Under Maintenance / Shutdown).
+   - Work Order Signoff: Record completed batch quotas and outstanding work orders.
+   - Safety & Incident Log: Record zero-accident confirmation or attach incident reports.
+   - Digital Log Entry: Submit the handover note via Sastra 98 Intranet -> Shift Handover.

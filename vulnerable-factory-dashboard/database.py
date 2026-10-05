@@ -66,7 +66,7 @@ EMPLOYEES = [
         0,
         "EMP-0001",
         0,
-        "FLAG{1d0r_3xpos3d_th3_adm1n_n0t3}",
+        "AxA{1d0r_3xpos3d_th3_adm1n_n0t3}",
     ),
 ]
 
@@ -79,7 +79,7 @@ GRIEVANCES = [
     (
         8,
         "Confidential: leadership review notes",
-        "FLAG{gr13vance_idor_l3aks_c0nf1dential_notes} -- do not forward outside management.",
+        "AxA{gr13vance_idor_l3aks_c0nf1dential_notes} -- do not forward outside management.",
         "Pending",
     ),
 ]
