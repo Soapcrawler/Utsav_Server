@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home :: Blast Furnace Guild{% endblock %}
+{% block content %}
+<h1 class="page-title">Welcome back, {{ user['full_name'] }}</h1>
+<div class="grid-2">
+  <section class="panel">
+    <h2>Your record</h2>
+    <div class="table-wrap"><table class="data-table">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Employee ID</td><td>{{ user['employee_id_number'] }}</td></tr>
+      <tr><td>Department</td><td>{{ user['department'] }}</td></tr>
+      <tr><td>Performance Score</td><td>{{ user['performance_score'] }}</td></tr>
+    </table></div>
+    <div class="actions">
+      <a class="btn" href="{{ url_for('profile', user_id=user['id']) }}">My profile</a>
+      <a class="btn" href="{{ url_for('employee_corner') }}">Employee Corner</a>
+      <a class="btn" href="{{ url_for('handover') }}">Shift handover</a>
+      <a class="btn" href="{{ url_for('grievances') }}">Grievances</a>
+      <a class="btn" href="{{ url_for('documents') }}">Factory Documents</a>
+    </div>
+  </section>
+  <aside class="panel panel-dark">
+    <h2>Notice board</h2>
+    <ul class="notices">
+      <li>Safety briefing Fri 9AM, Hall B</li>
+      <li>Employee Corner updated</li>
+      <li>Factory Documents archive accessible</li>
+      <li>Grievance portal open for Q3</li>
+    </ul>
+  </aside>
+</div>
+{% endblock %}
