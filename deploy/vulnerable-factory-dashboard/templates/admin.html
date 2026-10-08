@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block title %}Factory Control Center :: Blast Furnace Guild{% endblock %}
+{% block content %}
+<h1 class="page-title">&#128737;&#65039; Factory Control Center</h1>
+
+<!-- Overview / Metrics Grid -->
+<div class="grid-2">
+  <section class="panel">
+    <h2>Control Center Overview</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tr><th>Metric</th><th>Current Status</th></tr>
+        <tr><td>Total Registered Employees</td><td><b>{{ total_employees }}</b> personnel</td></tr>
+        <tr><td>Pending Grievances</td><td><b>{{ pending_grievances }}</b> open tickets</td></tr>
+        <tr><td>Active Departments</td><td><b>{{ dept_counts|length }}</b> operating divisions</td></tr>
+        <tr><td>Security Clearance</td><td><b>RESTRICTED MANAGEMENT ACCESS</b></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <aside class="panel panel-dark">
+    <h2>Management Directives</h2>
+    <ul class="notices">
+      <li><b>CONFIDENTIAL:</b> Supervisory clearance required for compensation audits.</li>
+      <li>Furnace thermal safety review scheduled for Q4.</li>
+      <li>Grievances under active investigation must remain restricted.</li>
+      <li>Shift handover logs must be reconciled after each rotation.</li>
+    </ul>
+  </aside>
+</div>
+
+<br>
+
+<!-- Department Breakdown -->
+<h2>Department Information</h2>
+<div class="table-wrap">
+  <table class="data-table">
+    <tr>
+      <th>Department</th>
+      <th>Headcount</th>
+      <th>Operational Status</th>
+    </tr>
+    {% for dept, count in dept_counts.items() %}
+    <tr>
+      <td><b>{{ dept }}</b></td>
+      <td>{{ count }} employee{% if count != 1 %}s{% endif %}</td>
+      <td>Active Duty</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<br>
+
+<!-- Employee Information / All Employees -->
+<h2>All employees</h2>
+<div class="table-wrap">
+  <table class="data-table">
+    <tr>
+      <th>ID</th>
+      <th>Badge #</th>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Dept</th>
+      <th>Score</th>
+      <th>Salary</th>
+      <th>Confidential Note</th>
+    </tr>
+    {% for u in users %}
+    <tr>
+      <td>{{ u['id'] }}</td>
+      <td><code>{{ u['employee_id_number'] or 'N/A' }}</code></td>
+      <td>{{ u['username'] }}</td>
+      <td><a href="{{ url_for('profile', user_id=u['id']) }}">{{ u['full_name'] }}</a></td>
+      <td><b>{{ u['role'] }}</b></td>
+      <td>{{ u['department'] }}</td>
+      <td>{{ u['performance_score'] }}</td>
+      <td>{% if u['salary'] %}${{ "{:,}".format(u['salary']) }}{% else %}&mdash;{% endif %}</td>
+      <td>{{ u['secret_note'] or '&mdash;' }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<br>
+
+<!-- Factory Reports & Operations -->
+<h2>Factory reports</h2>
+<div class="table-wrap">
+  <table class="data-table">
+    <tr>
+      <th>Shift Date</th>
+      <th>Supervisor</th>
+      <th>Work Order</th>
+      <th>Furnace 1</th>
+      <th>Furnace 2</th>
+      <th>Furnace 3</th>
+      <th>Furnace 4</th>
+      <th>Accidents</th>
+      <th>Attendance</th>
+    </tr>
+    {% for h in handovers %}
+    <tr>
+      <td>{{ h['shift_date'] }}</td>
+      <td>{{ h['full_name'] }}</td>
+      <td>{{ h['work_order'] }}</td>
+      <td>{{ h['furnace_1'] }}</td>
+      <td>{{ h['furnace_2'] }}</td>
+      <td>{{ h['furnace_3'] }}</td>
+      <td>{{ h['furnace_4'] }}</td>
+      <td>{{ h['accidents'] }}</td>
+      <td>{{ h['attendance'] }} / 30</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<br>
+
+<!-- All Grievances -->
+<h2>All grievances</h2>
+<div class="table-wrap">
+  <table class="data-table">
+    <tr>
+      <th>ID</th>
+      <th>From</th>
+      <th>Subject</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    {% for g in grievances %}
+    <tr>
+      <td>{{ g['id'] }}</td>
+      <td>{{ g['full_name'] }}</td>
+      <td>{{ g['subject'] }}</td>
+      <td>
+        {% if g['status'] == 'Pending' %}
+          <span style="color: #b00000; font-weight: bold;">{{ g['status'] }}</span>
+        {% else %}
+          {{ g['status'] }}
+        {% endif %}
+      </td>
+      <td><a class="btn" style="min-width: 50px; padding: 1px 6px;" href="{{ url_for('view_grievance', grievance_id=g['id']) }}">View</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

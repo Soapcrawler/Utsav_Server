@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Notices &amp; Alerts :: Blast Furnace Guild{% endblock %}
+{% block content %}
+<h1 class="page-title">Notices &amp; Alerts</h1>
+{% if notices %}
+{% for n in notices %}
+<section class="panel notice notice-{{ n['level']|lower }}">
+  <h2>
+    <span class="lvl">{{ n['level'] }}</span>
+    <span class="when">{{ n['posted_at'] }}</span>
+  </h2>
+  {% if n['photo'] %}
+  <img class="notice-photo" src="{{ url_for('notice_photo', name=n['photo']) }}" alt="Notice photo">
+  {% endif %}
+  {% if n['comment'] %}<p class="notice-text">{{ n['comment'] }}</p>{% endif %}
+</section>
+{% endfor %}
+{% else %}
+<section class="panel"><p>No notices have been posted.</p></section>
+{% endif %}
+<script>
+(function () {
+  var latest = {{ (notices[0]['id'] if notices else 0)|tojson }};
+  setInterval(function () {
+    fetch({{ url_for('notices_feed')|tojson }}, { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d && d.latest !== latest) location.reload(); })
+      .catch(function () {});
+  }, 8000);
+})();
+</script>
+{% endblock %}

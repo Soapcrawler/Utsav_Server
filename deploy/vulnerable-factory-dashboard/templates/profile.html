@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Profile :: {{ employee['full_name'] }}{% endblock %}
+{% block content %}
+<div class="panel">
+  <b>{{ employee['full_name'] }}</b> (@{{ employee['username'] }}) &mdash; {{ employee['role']|capitalize }}
+</div>
+<div class="table-wrap"><table class="data-table">
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td>Employee ID</td><td>{{ employee['employee_id_number'] }}</td></tr>
+  <tr><td>Department</td><td>{{ employee['department'] }}</td></tr>
+  <tr><td>Performance Score</td><td>{{ employee['performance_score'] }}</td></tr>
+  <tr><td>Salary</td><td>Rs. {{ "{:,}".format(employee['salary']) }}</td></tr>
+  {% if employee['secret_note'] %}
+  <tr><td>Internal Notes</td><td>{{ employee['secret_note'] }}</td></tr>
+  {% endif %}
+</table></div>
+<br>
+<p><a class="btn" href="{{ url_for('dashboard') }}">Back to Home</a></p>
+{% endblock %}

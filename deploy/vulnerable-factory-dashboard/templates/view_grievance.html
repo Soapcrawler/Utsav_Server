@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Grievance #{{ grievance['id'] }}{% endblock %}
+{% block content %}
+<div class="panel">
+  <b>{{ grievance['subject'] }}</b><br>
+  <span>Submitted by {{ grievance['full_name'] }} (@{{ grievance['username'] }}) &mdash; Status: {{ grievance['status'] }}</span>
+</div>
+<div class="panel"><p>{{ grievance['message'] }}</p></div>
+<p><a class="btn" href="{{ url_for('grievances') }}">Back to Grievances</a></p>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>&nbsp;</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #fff; }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+    }
+    img { max-width: 90vw; max-height: 35vh; display: block; }
+    p { margin: 0; font-size: 1.6rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <img src="{{ url_for('static', filename='congrats/congrats.jpg') }}" alt="">
+  <img src="{{ url_for('static', filename='congrats/congrats.gif') }}" alt="">
+  <p>Congrats blud you did it</p>
+</body>
+</html>
