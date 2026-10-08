@@ -27,14 +27,3 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python app.py          # http://localhost:5000
-
-For several simultaneous instances, see organizer/README.md for the NOTICES_DIR setting used by live notices.
-
-Content
-forge-and-fracture.zip
-
-ZIP
-
-forge-and-fracture.zip
-
-ZIP
