@@ -15,8 +15,11 @@ A Flask-based vulnerable factory intranet for security labs and CTF exercises.
 
 ```bash
 cd deploy/vulnerable-factory-dashboard
+python -m venv .venv (create virtual environment) 
+.\.venv\Scripts\activate.bat (activate venv) [Windows - CMD]
+source .venv/bin/activate (MacOS)
 pip install -r requirements.txt
-python app.py
+flask run 
 ```
 
 Open `http://localhost:5000`.
