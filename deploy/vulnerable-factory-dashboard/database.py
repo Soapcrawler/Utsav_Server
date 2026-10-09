@@ -60,9 +60,9 @@ EMPLOYEES = [
     ("geligah", "summer2024", "Geoff Eligah", "employee", "Production", 92, "EMP-1042", 48000, None),
     ("bnatas", "letmein", "Benjamin Natas", "employee", "Quality Control", 88, "EMP-1077", 51000, None),
     ("jdeeler", "jmehta2023", "John Deeler", "employee", "Maintenance", 95, "EMP-1013", 53000, None),
-    ("adas", "password123", "Ananya Das", "employee", "Logistics", 74, "EMP-1098", 46000, None),
-    ("vsingh", "vsingh!1", "Vikram Singh", "employee", "HR", 68, "EMP-1061", 49500, None),
-    ("tnair", "tiger123", "Tara Nair", "employee", "Production", 81, "EMP-1055", 47000, None),
+    ("adas", "password123", "Sourav Das", "employee", "Logistics", 74, "EMP-1098", 46000, None),
+    ("ckirk", "heIsalive", "Charlie Kirk", "employee", "HR", 68, "EMP-1061", 49500, None),
+    ("vjoseph", "pm2029", "Vijay Joseph", "employee", "CM", 81, "EMP-1055", 47000, None),
     ("kgowda", "kgowda321", "Kiran Gowda", "employee", "Quality Control", 90, "EMP-1029", 50500, None),
     (
         "admin",
