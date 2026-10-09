@@ -13,7 +13,7 @@ APPLIES TO: Furnaces 1, 2, 3, and 4 (Smelting & Annealing Line)
 
 2. IGNITION & PRE-HEATING SEQUENCE
    - Activate automated chamber nitrogen purge cycle (minimum 180 seconds).
-   - Engage pilot burner ignition sequence via Sastra 98 Control terminal.
+   - Engage pilot burner ignition sequence via Blast Furnace Guild Control terminal.
    - Confirm flame stabilization through infrared optical sensor check.
    - Ramp chamber temperature at a maximum gradient of 60°C per hour until reaching 850°C.
 

@@ -22,7 +22,7 @@
 </div>
 
 <div class="startmenu" id="startmenu" hidden>
-  <div class="sm-banner">Sastra 98</div>
+  <div class="sm-banner">Blast Furnace Guild 98</div>
   <div class="sm-items">
     {% if session.get('user_id') %}
     <a href="{{ url_for('dashboard') }}">&#128421;&#65039; My Home</a>
@@ -69,7 +69,7 @@
       </div>
       <div class="addrbar">
         <span>Address</span>
-        <div class="address">&#128196; http://sastra-intranet{{ request.path }}</div>
+        <div class="address">&#128196; http://blastfurnaceguild-intranet{{ request.path }}</div>
         <button type="button" class="go">&#9658; Go</button>
       </div>
       <div class="linksbar">
@@ -91,7 +91,7 @@
         <aside class="tree" aria-label="Folders">
           <div class="tree-head"><span>Folders</span><span>&#10005;</span></div>
           <ul class="tree-root">
-            <li>&#128421;&#65039; <b>Apex Intranet</b>
+            <li>&#128421;&#65039; <b>Blast Furnace Guild</b>
               <ul>
                 <li>&#128193; <a href="{{ url_for('dashboard') }}" class="{{ 'is-active' if request.endpoint == 'dashboard' }}">My Home</a></li>
                 <li>&#128194; <a href="{{ url_for('employee_corner') }}" class="{{ 'is-active' if request.endpoint == 'employee_corner' }}">Employee Corner</a></li>
@@ -118,7 +118,7 @@
 
       {% if session.get('user_id') %}
       <div class="statusbar">
-        <span>Done</span><span>&#128100; {{ session.get('username') }} ({{ session.get('role') }})</span><span>Apex Plant Intranet v1.2</span><span>&#127760; Intranet zone</span>
+        <span>Done</span><span>&#128100; {{ session.get('username') }} ({{ session.get('role') }})</span><span>Blast Furnace Guild Intranet v1.2</span><span>&#127760; Intranet zone</span>
       </div>
       {% endif %}
     </section>

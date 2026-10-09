@@ -20,4 +20,4 @@ Document ID: DOC-SOP-HANDOVER-01 (Rev 3.0)
      (Running / Idle / Under Maintenance / Shutdown).
    - Work Order Signoff: Record completed batch quotas and outstanding work orders.
    - Safety & Incident Log: Record zero-accident confirmation or attach incident reports.
-   - Digital Log Entry: Submit the handover note via Sastra 98 Intranet -> Shift Handover.
+   - Digital Log Entry: Submit the handover note via Blast Furnace Guild Intranet -> Shift Handover.
