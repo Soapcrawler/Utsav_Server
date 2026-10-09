@@ -16,13 +16,32 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       text-align: center;
     }
+    .meme{
+      display:flex;
+      justify-content: center;
+    }
     img { max-width: 90vw; max-height: 35vh; display: block; }
     p { margin: 0; font-size: 1.6rem; font-weight: 600; }
+    .gcontainer{
+      display:flex;
+      justify-content: center;
+
+    }
+    .gcontainer img{
+      width:100px;
+      height:auto;
+    }
   </style>
 </head>
 <body>
+  <div class="meme">
   <img src="{{ url_for('static', filename='congrats/congrats.jpg') }}" alt="">
   <img src="{{ url_for('static', filename='congrats/congrats.gif') }}" alt="">
-  <p>Congrats blud you did it</p>
+  </div>
+  <p><b>clap* clap* clap*</b></p>
+  <div class="gcontainer">
+  <p>Congrats bro you did it now go touch some grass</p>
+  <img src="{{ url_for('static', filename='congrats/grass.png') }}" alt="">
+  </div>
 </body>
 </html>

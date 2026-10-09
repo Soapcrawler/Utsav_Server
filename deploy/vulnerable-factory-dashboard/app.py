@@ -95,6 +95,7 @@ ROBOTS_TXT = (
     "Disallow: /admin\n"
     "Disallow: /handover\n"
     "# audit trail: AxA{r0b0ts_t0ld_y0u_n0t_t0_l00k_b0nus}\n"
+    "# 7767 6666 67 7 66 666 776 676 777 777 7 766 777 66 677 776 6666 6 676 6"
 )
 
 
